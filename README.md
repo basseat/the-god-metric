@@ -1,81 +1,103 @@
 # The God Metric
-### Against the Narrative — No. 3
 
-> *Is religion actually declining? Or is that just a Western story?*
+**Everyone says religion is dying. Most of the world didn't get that memo.**
 
-This is the data pipeline behind the third investigation in the **Against the Narrative** Substack series. It stress-tests the secularisation thesis — the widely-held idea that modernisation causes religion to decline — using 110+ years of global religious affiliation data.
+The secularisation thesis — the idea that as societies modernise, religion fades — is one of the most widely repeated frameworks in social science and media. It shows up in think pieces, policy debates, and demographic forecasts. It is also, when you look at the data globally, a description of a fairly specific set of countries mostly located in Western Europe.
 
-**The short answer the data gives: the secularisation thesis is real, but local. It describes Western Europe and parts of East Asia. It does not describe the world.**
+That gap between the story and the data is what this project is about.
 
----
-
-## The Three Hypotheses
-
-The starting point for each investigation is the conventional claim — the narrative. The data either confirms it, complicates it, or kills it.
-
-**H1 — "As countries modernise, religious affiliation declines"**
-This is the secularisation thesis: the idea that economic development, education, and urbanisation systematically erode religion. It is the dominant framework in Western sociology and the implicit assumption behind most media coverage of religion. We test whether it holds at a global level, or whether it describes only a specific set of countries.
-
-**H2 — "Christianity is a predominantly European religion"**
-This is the assumption embedded in phrases like "Western Christianity" and "Christian Europe." Most people, if asked to place the global centre of Christianity, would point to Europe or North America. We test whether that picture is still accurate — or whether it ever was, by the time the data begins.
-
-**H3 — "Access to modern media and the internet accelerates secularisation"**
-The intuition here is common: more information, more exposure to different worldviews, less religious certainty. We test whether that relationship holds in the Global South, or whether media technology played a different role entirely in regions where religion was already the dominant social fabric.
+**[→ View the Tableau dashboard on Tableau Public](#)** *(link to be added)*
 
 ---
 
-## What the Data Shows
+## What the data actually shows
 
-**H1** — Partially confirmed, but only in specific regions. The OWID dataset (199 countries, 2010 vs 2020) shows the global average share of the population affiliated with religion is above 80% and stable. Decline is real — but concentrated in Western Europe, parts of East Asia, and Anglophone countries. The secularisation thesis holds locally. It does not hold globally.
+Three hypotheses. Three verdicts.
 
-**H2** — Does not survive contact with the data. Africa surpassed Europe in absolute Christian population *by 2010*. In 1910, Sub-Saharan Africa held roughly 9% of the world's Christians. By 2050, that figure is projected at ~40%. Europe goes from ~72% to ~17% over the same period.
+| # | Hypothesis | Verdict |
+|---|---|---|
+| H1 | As countries modernise, religious affiliation declines | **Partially supported — but only in specific regions** |
+| H2 | Christianity is a predominantly European religion | **Does not survive the data** |
+| H3 | Access to modern media and the internet accelerates secularisation | **Complicated — the opposite may be true in the Global South** |
 
-| Year | Africa (Christians) | Europe (Christians) | Who leads |
-|------|--------------------|--------------------|-----------|
+### H1 — Secularisation is real, but local
+
+Across 199 countries (OWID/Pew, 2010 vs 2020), the global average share of the population affiliated with any religion sits above 80% and is stable. Decline is real — but concentrated in Western Europe, parts of East Asia, Australia, and Canada. The majority of the world, by both country count and population, is holding steady or growing more religious.
+
+The secularisation thesis holds in the places where most of its proponents live and write. Applied to the whole planet, it doesn't hold.
+
+*Caveat: self-reported religious affiliation is a blunt instrument. Intensity of belief and practice are harder to measure and may diverge from affiliation trends.*
+
+### H2 — The centre of Christianity has moved
+
+This is the finding that surprised me most when the data came together.
+
+In 1910, roughly 72% of the world's Christians lived in Europe. By 2010, Sub-Saharan Africa had already overtaken Europe in absolute Christian population. By 2050, Africa is projected to hold approximately 40% of all Christians on Earth — while Europe holds under 20%.
+
+| Year | Africa | Europe | Who leads |
+|------|--------|--------|-----------|
 | 1910 | ~9M | ~400M | Europe |
 | 1970 | ~143M | ~479M | Europe |
 | 2010 | **~434M** | ~392M | **Africa** ← crossover |
 | 2050 | **~1.15B** (projected) | ~201M | **Africa** |
 
-**H3** — Complicated. The data does not support a simple secularisation-via-media story in the Global South. Sub-Saharan Africa's media penetration curves — radio in the 1970s, TV in the 1990s, mobile explosion from 2000–2010 — coincide with periods of rapid religious *growth*, not decline. Nigeria went from near-zero mobile penetration in 1999 to over 70 per 100 by 2010, the same decade Pentecostalism expanded dramatically across the country. The relationship between media and religion appears to run in the opposite direction to what the hypothesis assumed.
+The crossover already happened. The picture most people carry — Christianity as a Western or European religion — is describing a world that no longer exists by the data's own accounting.
+
+### H3 — Media and religion in the Global South
+
+The intuitive assumption is that more media access means more exposure to secular worldviews and therefore less religiosity. The data in Sub-Saharan Africa doesn't obviously support that.
+
+Nigeria went from near-zero mobile penetration in 1999 to over 70 subscriptions per 100 people by 2010. Over that same decade, Pentecostal and Evangelical Christianity expanded significantly across the country. The same pattern — media wave followed by, or coinciding with, religious growth rather than decline — appears in Kenya, Ghana, and parts of Latin America.
+
+This doesn't prove causation. But it complicates the assumption that media access and secularisation move together everywhere.
+
+*Caveat: the pentecostal growth data is incomplete. H3 is the weakest of the three findings and needs richer denominational data to strengthen.*
 
 ---
 
-## Data Sources
+## Why this matters
 
-| Source | What it covers | How it's loaded |
-|--------|----------------|-----------------|
-| **Pew Research Center** (2015) | Regional populations 1910–2050 by religion | Hardcoded seed — `etl/02_load_pew.py` |
-| **Pew Research Center** (2015) | Country-level religion shares, 85 countries, 2010 + 2050 | Hardcoded seed — `etl/06_seed_country_religion.py` |
-| **Our World in Data / Pew** (2025) | % religious by country, 199 countries, 2010 + 2020 | Auto-downloaded — `etl/05_load_owid_religion.py` |
-| **World Bank** | Radio, TV, mobile, internet penetration 1960–2023 | Auto-fetched via API — `etl/03_load_worldbank.py` |
-| **World Values Survey** (Waves 1–7) | Religiosity intensity, attendance, atheism rates | Manual download — `etl/04_load_wvs.py` |
+The secularisation narrative has real consequences — it shapes how media covers religion, how policymakers think about demographic change, and how institutions forecast the future. When that narrative is built primarily on Western European data and then applied globally, it misrepresents what is actually happening in the places where most of the world's population lives.
+
+A more accurate framing: religion is not declining. It is moving. The geography of faith is shifting south and east, and the numbers involved are large enough that missing this shift is a significant analytical error.
 
 ---
 
-## Project Structure
+## Data sources
+
+| Source | What's captured |
+|---|---|
+| Pew Research Center — *Global Religious Futures* (2015) | Religious affiliation by region and country, 1910–2050 projections |
+| Our World in Data / Pew (2025) | Aggregate % religious by country, 199 countries, 2010 and 2020 |
+| World Bank Development Indicators API | Radio, TV, mobile, and internet penetration by country, 1960–2023 |
+| World Values Survey — Time-Series (Waves 1–7, 1981–2022) | Religiosity intensity: importance of religion, attendance, self-identified atheism |
+
+---
+
+## Project structure
 
 ```
 god_metric/
 ├── README.md
 ├── setup/
-│   └── 01_create_schema.sql        ← Star schema DDL (run first)
+│   └── 01_create_schema.sql        ← PostgreSQL star schema (run first)
 ├── etl/
-│   ├── 02_load_pew.py              ← Pew regional aggregates + seed data
-│   ├── 03_load_worldbank.py        ← World Bank media penetration via API
+│   ├── 02_load_pew.py              ← Pew regional seed data
+│   ├── 03_load_worldbank.py        ← World Bank media penetration (API)
 │   ├── 04_load_wvs.py              ← World Values Survey (manual download)
-│   ├── 05_load_owid_religion.py    ← OWID aggregate religiosity via API
-│   └── 06_seed_country_religion.py ← Country-level Pew data (Tableau maps)
+│   ├── 05_load_owid_religion.py    ← OWID aggregate religiosity (API)
+│   └── 06_seed_country_religion.py ← Country-level Pew data for Tableau maps
 ├── queries/
 │   └── EDA/
-│       ├── 01_H1_secularisation_test.sql    ← H1 analysis
-│       ├── 02_H2_christianity_migration.sql ← H2 analysis
-│       ├── 03_H3_media_religion.sql         ← H3 analysis
+│       ├── 00_religion_trends_over_time.sql ← All religions, full timeline
+│       ├── 01_H1_secularisation_test.sql
+│       ├── 02_H2_christianity_migration.sql
+│       ├── 03_H3_media_religion.sql
 │       └── 04_tableau_ready_queries.sql     ← Custom SQL for Tableau
 ├── validate/
-│   └── 05_validate.sql             ← Post-ETL data quality checks
+│   └── 05_validate.sql
 └── data/
-    └── raw/                        ← Downloaded source files (gitignored)
+    └── raw/                        ← Source files (gitignored)
         ├── owid/
         ├── worldbank/
         └── wvs/
@@ -83,46 +105,15 @@ god_metric/
 
 ---
 
-## Schema
+## Running the project
 
-```
-dim_country          ← ISO3/ISO2 codes, region, World Bank income group
-dim_religion         ← Religion name, propagation model, conversion mandate
-dim_year             ← 1900–2050, is_projection flag
-
-fact_religious_population   ← H1, H2: country × religion × year → count + %
-fact_wvs_religiosity        ← H1: religiosity intensity by country/wave
-fact_media_penetration      ← H3: radio/TV/mobile/internet by country/year
-fact_pentecostal_growth     ← H3: Pentecostal sub-breakdown (optional)
-
-Views:
-  v_global_affiliation_trend   ← H1 query-ready
-  v_christianity_by_region     ← H2 query-ready
-  v_media_vs_pentecostal       ← H3 query-ready
-  v_wvs_intensity_by_region    ← H1 supplement
-```
-
----
-
-## Setup
-
-### Requirements
-- PostgreSQL 18 (tested with EDB installer on macOS — [download here](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads))
-- Python 3.9+
+**Requirements:** PostgreSQL 18, Python 3.9+
 
 ```bash
-pip3 install psycopg2-binary pandas requests openpyxl pyarrow
+pip install psycopg2-binary pandas requests openpyxl pyarrow
 ```
 
-### 1. Create the database
-
-```bash
-psql -U postgres -c "CREATE DATABASE god_metric;"
-psql -U postgres -d god_metric -f setup/01_create_schema.sql
-```
-
-### 2. Set environment variables
-
+**Set environment variables:**
 ```bash
 export PGDATABASE=god_metric
 export PGUSER=postgres
@@ -131,51 +122,42 @@ export PGHOST=localhost
 export PGPORT=5432
 ```
 
-### 3. Run the ETL in order
-
+**Run the ETL in order:**
 ```bash
-python3 etl/02_load_pew.py              # Pew regional seed data
-python3 etl/03_load_worldbank.py        # World Bank media (auto API)
-python3 etl/05_load_owid_religion.py    # OWID aggregate (auto API)
-python3 etl/06_seed_country_religion.py # Country-level Pew + OWID
-python3 etl/04_load_wvs.py             # WVS (after manual download)
+psql -U postgres -d god_metric -f setup/01_create_schema.sql
+python3 etl/02_load_pew.py
+python3 etl/03_load_worldbank.py
+python3 etl/05_load_owid_religion.py
+python3 etl/06_seed_country_religion.py
+python3 etl/04_load_wvs.py          # requires manual WVS download (see below)
 ```
 
-### 4. World Values Survey (manual download required)
-
+**World Values Survey** (registration required):
 1. Go to [worldvaluessurvey.org](https://www.worldvaluessurvey.org/WVSContents.jsp)
-2. Click **Data & Documentation** → **WVS Time-Series (1981–2022)**
-3. Download CSV → save to `data/raw/WVS_TimeSeries_1981_2022_csv_v4_0.csv`
+2. Download *WVS Time-Series (1981–2022)* as CSV
+3. Save to `data/raw/WVS_TimeSeries_1981_2022_csv_v4_0.csv`
 
-### 5. Validate
-
-```bash
-psql -U postgres -d god_metric -f validate/05_validate.sql
-```
+Then load any of the queries in `queries/EDA/04_tableau_ready_queries.sql` as Custom SQL in Tableau (connect to `localhost:5432 / god_metric`).
 
 ---
 
-## Tableau
+## Limitations
 
-Connect Tableau to PostgreSQL (`localhost:5432` / database: `god_metric`) and use the queries in `queries/EDA/04_tableau_ready_queries.sql` as Custom SQL data sources. Each query is labelled with the dashboard and sheet it feeds.
-
-**Planned dashboards:**
-1. The Big Picture — global religiosity world map (H1)
-2. The Great Migration — Christianity's shift from Europe to Africa (H2)
-3. The Media Wave — media penetration vs religious growth in SSA (H3)
-4. Religion by Religion — multi-religion world map
-5. The Narrative Summary — key statistics for the article
+- **Affiliation vs belief** — religious self-identification is not the same as active practice or theological conviction. Someone who ticks "Christian" on a census and someone who attends church weekly are counted the same way here.
+- **Projection uncertainty** — the 2050 Pew figures are demographic projections based on fertility and migration models, not forecasts. They assume no major shifts in conversion patterns.
+- **H3 is underspecified** — media penetration and Christianity growth are correlated in the data, but the causal mechanism is unclear, and pentecostal/evangelical sub-data is not comprehensive enough to make a strong claim.
+- **Country coverage gaps** — the country-level religion data covers ~85 countries. Regions with sparse data (Central Asia, Pacific Island states) are underrepresented in map visualisations.
 
 ---
 
-## Part of the Against the Narrative Series
+## Related research
 
-| No. | Title | Theme |
-|-----|-------|-------|
-| 1 | The Attention Paradox | Is screen time actually shortening attention spans? |
-| 2 | The Green Miles Problem | Are electric vehicles actually greener? |
-| **3** | **The God Metric** | **Is religion actually declining globally?** |
+- Pew Research Center — *The Future of World Religions: Population Growth Projections 2010–2050* (2015)
+- Philip Jenkins — *The Next Christendom* (2002)
+- Pippa Norris & Ronald Inglehart — *Sacred and Secular: Religion and Politics Worldwide* (2004)
+- World Values Survey — [worldvaluessurvey.org](https://www.worldvaluessurvey.org)
+- Our World in Data — *Religion* topic page
 
 ---
 
-*Data journalism by Basit. Questions and feedback welcome.*
+*Basit Ayoade · Data Analytics Portfolio · 2026*
