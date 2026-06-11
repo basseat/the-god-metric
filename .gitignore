@@ -1,0 +1,41 @@
+# ── Data files (large / not for version control) ─────────────────────────────
+data/raw/
+data/processed/
+*.parquet
+*.csv
+*.xlsx
+*.xls
+
+# Keep the data folder structure but not the files
+!data/.gitkeep
+!data/raw/.gitkeep
+!data/raw/owid/.gitkeep
+!data/raw/worldbank/.gitkeep
+!data/raw/wvs/.gitkeep
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+.env.*
+*.env
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Editors ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
