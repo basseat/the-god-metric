@@ -32,16 +32,17 @@ The secularisation thesis holds in the places where most of its proponents live 
 
 This is the finding that surprised me most when the data came together.
 
-In 1910, roughly 72% of the world's Christians lived in Europe. By 2010, Sub-Saharan Africa had already overtaken Europe in absolute Christian population. By 2050, Africa is projected to hold approximately 40% of all Christians on Earth — while Europe holds under 20%.
+In 1910, roughly 72% of the world's Christians lived in Europe. By 2050, Sub-Saharan Africa is projected to hold approximately 40% of all Christians on Earth — while Europe holds under 20%. The crossover point, based on Pew's own figures, falls somewhere in the 2020s: Europe still holds a slim lead in 2010, but the trajectory is unambiguous.
 
 | Year | Africa | Europe | Who leads |
 |------|--------|--------|-----------|
 | 1910 | ~9M | ~400M | Europe |
 | 1970 | ~143M | ~479M | Europe |
-| 2010 | **~434M** | ~392M | **Africa** ← crossover |
+| 2010 | ~517M | ~553M | Europe (narrowing fast) |
+| 2020s | — | — | **Crossover** (projected) |
 | 2050 | **~1.15B** (projected) | ~201M | **Africa** |
 
-The crossover already happened. The picture most people carry — Christianity as a Western or European religion — is describing a world that no longer exists by the data's own accounting.
+The crossover is happening now. The picture most people carry — Christianity as a Western or European religion — is describing a world that is rapidly ceasing to exist.
 
 ### H3 — Media and religion in the Global South
 
@@ -86,7 +87,8 @@ god_metric/
 │   ├── 03_load_worldbank.py        ← World Bank media penetration (API)
 │   ├── 04_load_wvs.py              ← World Values Survey (manual download)
 │   ├── 05_load_owid_religion.py    ← OWID aggregate religiosity (API)
-│   └── 06_seed_country_religion.py ← Country-level Pew data for Tableau maps
+│   ├── 06_seed_country_religion.py ← Country-level Pew data for Tableau maps
+│   └── 07_patch_regional_history.py ← Backfill missing 1910/1970 regional data
 ├── queries/
 │   └── EDA/
 │       ├── 00_religion_trends_over_time.sql ← All religions, full timeline
@@ -129,7 +131,8 @@ python3 etl/02_load_pew.py
 python3 etl/03_load_worldbank.py
 python3 etl/05_load_owid_religion.py
 python3 etl/06_seed_country_religion.py
-python3 etl/04_load_wvs.py          # requires manual WVS download (see below)
+python3 etl/07_patch_regional_history.py   # backfills 1910/1970 for Asia-Pacific, MENA, Latin America
+python3 etl/04_load_wvs.py                 # requires manual WVS download (see below)
 ```
 
 **World Values Survey** (registration required):
