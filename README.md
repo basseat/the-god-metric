@@ -6,7 +6,7 @@ The secularisation thesis — the idea that as societies modernise, religion fad
 
 That gap between the story and the data is what this project is about.
 
-**[→ View the Tableau dashboard on Tableau Public](#)** *(link to be added)*
+**[→ View the Tableau dashboard on Tableau Public](https://public.tableau.com/app/profile/abdulbasit.ayoade/viz/TheGodMetric/H1WorldMap)**
 
 ---
 
@@ -88,7 +88,8 @@ god_metric/
 │   ├── 04_load_wvs.py              ← World Values Survey (manual download)
 │   ├── 05_load_owid_religion.py    ← OWID aggregate religiosity (API)
 │   ├── 06_seed_country_religion.py ← Country-level Pew data for Tableau maps
-│   └── 07_patch_regional_history.py ← Backfill missing 1910/1970 regional data
+│   ├── 07_patch_regional_history.py ← Backfill missing 1910/1970 regional data
+│   └── 08_load_multi_religion.py   ← OWID/Pew 2025: 7 religions × 199 countries × 2010/2020
 ├── queries/
 │   └── EDA/
 │       ├── 00_religion_trends_over_time.sql ← All religions, full timeline
@@ -132,6 +133,7 @@ python3 etl/03_load_worldbank.py
 python3 etl/05_load_owid_religion.py
 python3 etl/06_seed_country_religion.py
 python3 etl/07_patch_regional_history.py   # backfills 1910/1970 for Asia-Pacific, MENA, Latin America
+python3 etl/08_load_multi_religion.py      # OWID/Pew 2025: 7 religions × 199 countries (religion world map)
 python3 etl/04_load_wvs.py                 # requires manual WVS download (see below)
 ```
 
